@@ -20,10 +20,10 @@ MPU6050 mpu;
 SoftwareSerial BT(12,11);
 
 // Bluetooth constants
-const int EN = 9;
-const int VCC = 8;
+const int EN = 12;
+const int VCC = 13;
 const byte BT_CONFIG_ON = 0;
-const byte DEBUG_YPR = 1;
+const byte DEBUG_YPR = 0;
 String message;
 
 // Motors control
@@ -33,8 +33,8 @@ int IN2 = 7;
 int IN3 = 9;
 int IN4 = 8;
 int ENB = 10;
-double left_speed_motor = 0.45; //double left_speed_motor = 0.3;
-double right_speed_motor = 0.45; //double right_speed_motor = 0.3;
+double left_speed_motor = 0.3; //double left_speed_motor = 0.3;
+double right_speed_motor = 0.3; //double right_speed_motor = 0.3;
 
 // MPU controls
 bool dmp_ready = false; // set true if DMP init was successful
@@ -53,10 +53,10 @@ float ypr[3]; // [yaw, pitch, roll] yaw/pitch/roll container and gravity vector
 int state = 'g';
 
 // PID contorls (Modify these values based on design)
-double breakeven = 177;
-double Kp = 62;  //double Kp = 60; 
-double Kd = 2.6;  //double Kd = 2.2;  
-double Ki = 220;  //double Ki = 270;
+double breakeven = 178;
+double Kp = 60;  //double Kp = 60; 
+double Kd = 2.5;  //double Kd = 2.2;  
+double Ki = 250;  //double Ki = 270;
 
 double original_setpoint = breakeven;   //double originalSetpoint = 172.50;
 double setpoint = original_setpoint;
@@ -68,7 +68,7 @@ PID pid(&input, &output, &setpoint, Kp, Ki, Kd, DIRECT);
 double motor_speed_factor_left = left_speed_motor; //double motor_speed_factor_left = 0.6;
 double motor_speed_factor_right = right_speed_motor; //double motor_speed_factor_right = 0.5;
 
-LMotorController motorController(ENA, IN1, IN2, ENB, IN3, IN4, motor_speed_factor_left, motor_speed_factor_right);
+LMotorController motorController(ENA, IN1, IN2, ENB, IN3, IN4, motor_speed_factor_left, motor_speed_factor_right); 
 
 volatile bool mpu_interrupt = false; // indicates whether MPU interrupt pin has gone high
 

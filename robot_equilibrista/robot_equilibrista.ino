@@ -47,8 +47,6 @@ uint8_t fifo_buffer[64]; // FIFO storage buffer
 // Orientation/motion vars
 Quaternion q; // [w, x, y, z] quaternion container
 VectorFloat gravity; // [x, y, z] gravity vector
-int accel[3]; // [x, y, z] accel container
-int gyro[3]; // [x, y, z] accel container
 float ypr[3]; // [yaw, pitch, roll] yaw/pitch/roll container and gravity vector
 
 // Initial status 'stopped'
@@ -142,12 +140,6 @@ void loop(){
       motorController.move(output, MIN_ABS_SPEED);
     }
 
-    if(DEBUG_YPR){
-      //draw_ypr();
-      draw_accel();
-      draw_gyro();
-    }
-      
     // Reset interrupt flag and get INT_STATUS byte
     mpu_interrupt = false;
     mpu_int_status = mpu.getIntStatus();
@@ -177,47 +169,9 @@ void loop(){
       mpu.dmpGetQuaternion(&q, fifo_buffer);
       mpu.dmpGetGravity(&gravity, &q);
       mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
-      mpu.dmpGetAccel(accel, fifo_buffer);
-      mpu.dmpGetGyro(gyro, fifo_buffer);
       input = ypr[1] * 180/M_PI + 180;
     }
   }
-}
-
-void draw_ypr() {
-  double yaw = ypr[0] * 180/M_PI + 180;
-  double pitch = ypr[1] * 180/M_PI + 180;
-  double roll = ypr[2] * 180/M_PI + 180;
-  Serial.print(yaw);
-  Serial.print(",");
-  Serial.println(pitch);
-  Serial.print(",");
-  Serial.print(roll);  
-  Serial.println("");
-}
-
-void draw_accel() {
-  double accel_x = accel[0];
-  double accel_y = accel[1];
-  double accel_z = accel[2];
-  Serial.print(accel_x);
-  Serial.print(",");
-  Serial.println(accel_y);
-  Serial.print(",");
-  Serial.print(accel_z);  
-  Serial.println("");
-}
-
-void draw_gyro() {
-  double gyro_x = gyro[0];
-  double gyro_y = gyro[1];
-  double gyro_z = gyro[2];
-  Serial.print(gyro_x);
-  Serial.print(",");
-  Serial.println(gyro_y);
-  Serial.print(",");
-  Serial.print(gyro_z);  
-  Serial.println("");
 }
 
 void dmpDataReady(){

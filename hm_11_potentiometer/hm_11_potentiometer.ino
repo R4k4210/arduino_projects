@@ -2,12 +2,7 @@
 
 SoftwareSerial BT(10,11);
 
-// HOLA =->>>> asdfasdfasd fasdfrasdfasdfasd
-// HOLA =->>>> asdfasdfasd fasdfrasdfasdfasd
-// HOLA =->>>> asdfasdfasd fasdfrasdfasdfasd
-// HOLA =->>>> asdfasdfasd fasdfrasdfasdfasd
-// HOLA =->>>> asdfasdfasd fasdfrasdfasdfasd
-// HOLA =->>>> asdfasdfasd fasdfrasdfasdfasd
+// Deja de agregar comentarios
 
 const int EN = 9;
 const int VCC = 8;

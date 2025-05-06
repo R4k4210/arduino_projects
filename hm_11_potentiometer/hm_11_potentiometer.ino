@@ -2,6 +2,13 @@
 
 SoftwareSerial BT(10,11);
 
+// HOLA =->>>> asdfasdfasd fasdfrasdfasdfasd
+// HOLA =->>>> asdfasdfasd fasdfrasdfasdfasd
+// HOLA =->>>> asdfasdfasd fasdfrasdfasdfasd
+// HOLA =->>>> asdfasdfasd fasdfrasdfasdfasd
+// HOLA =->>>> asdfasdfasd fasdfrasdfasdfasd
+// HOLA =->>>> asdfasdfasd fasdfrasdfasdfasd
+
 const int EN = 9;
 const int VCC = 8;
 const int POT = A1;

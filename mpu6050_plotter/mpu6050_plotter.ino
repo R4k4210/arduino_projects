@@ -6,6 +6,13 @@
 
 Adafruit_MPU6050 mpu;
 
+
+// >>>>>>>>>>>>
+// >>>>>>>>>>>>
+// >>>>>>>>>>>>
+// >>>>>>>>>>>>
+// >>>>>>>>>>>>
+
 void setup(void) {
   Serial.begin(115200);
   while (!Serial)

@@ -2,7 +2,7 @@
 
 SoftwareSerial BT(10,11);
 
-// Deja de agregar comentarios
+// Otro nuevo comentario, en la rama experimental
 
 const int EN = 9;
 const int VCC = 8;
